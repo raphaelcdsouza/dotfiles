@@ -1,3 +1,6 @@
+-- Filename: treesitter.lua
+-- Last changed: Wed, 15 Oct 2025, 11:35PM
+
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
