@@ -53,6 +53,13 @@ local options = {
   foldcolumn = "1",
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
+
+  -- File & Path
+  path = vim.opt.path + "**",
+  autochdir = false,
+  isfname = vim.opt.isfname:append("@-@"),
+  undofile = true,
+  hidden = true,
 }
 
 for k, v in pairs(options) do
