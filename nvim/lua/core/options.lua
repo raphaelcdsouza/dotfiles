@@ -69,6 +69,10 @@ local options = {
   timeoutlen = 500,
   ttimeoutlen = 10,
   updatetime = 250,
+
+  -- Scrolling
+  scrolloff = 8,
+  sidescrolloff = 10,
 }
 
 for k, v in pairs(options) do
