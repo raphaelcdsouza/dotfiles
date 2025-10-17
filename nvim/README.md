@@ -40,7 +40,7 @@ For detailed information about specific configurations, see:
    nvim
    ```
 
-### Option 2: Symbolic Link (macOS)
+### Option 2: Symbolic Link (macOS/Unix)
 
 If you manage your dotfiles in a separate directory, you can create a symbolic link:
 
@@ -48,7 +48,7 @@ If you manage your dotfiles in a separate directory, you can create a symbolic l
 ln -s /path/to/your/dotfiles/nvim ~/.config/nvim
 ```
 
-**Note:** This method is specifically for macOS. Replace `/path/to/your/dotfiles/nvim` with the actual path to your dotfiles directory.
+**Note:** This method is specifically for macOS/Unix. Replace `/path/to/your/dotfiles/nvim` with the actual path to your dotfiles directory.
 
 ## Configuration Files
 
