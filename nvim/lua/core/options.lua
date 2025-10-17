@@ -60,6 +60,10 @@ local options = {
   isfname = vim.opt.isfname:append("@-@"),
   undofile = true,
   hidden = true,
+
+  -- Visual indicators
+  list = true,
+  listchars = { leadmultispace = "│   ", multispace = "│ ", trail = "•", tab = "→ " },
 }
 
 for k, v in pairs(options) do
