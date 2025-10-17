@@ -15,6 +15,7 @@ Dotfiles are configuration files (typically prefixed with a dot `.` on Unix-like
 This repository currently contains configurations for:
 
 - **[Neovim](nvim/README.md)** - Personal Neovim configuration using Lua, including plugin management with lazy.nvim
+- **Zsh** (`.zshrc`) - Zsh shell configuration with oh-my-zsh, spaceship theme, and development tools (asdf, NVM, Zinit plugins)
 
 ## Usage
 
@@ -25,8 +26,11 @@ Each subdirectory contains its own README with specific setup instructions and d
 Most configurations in this repository are designed to work with symbolic links:
 
 ```bash
-# Example: linking a configuration
-ln -s /path/to/dotfiles/<config-dir> ~/.config/<config-dir>
+# Example: linking Neovim configuration
+ln -s /path/to/dotfiles/nvim ~/.config/nvim
+
+# Example: linking Zsh configuration
+ln -s /path/to/dotfiles/.zshrc ~/.zshrc
 ```
 
 Refer to each configuration's README for specific setup instructions.
