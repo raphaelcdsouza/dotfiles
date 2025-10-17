@@ -8,8 +8,8 @@ vim.g.matchparen_timeout = 20
 vim.g.matchparen_insert_timeout = 20
 
 local options = {
-	-- Display & UI
-	winbar = '%=%m %f %y',
+  -- Display & UI
+  winbar = '%=%m %f %y',
   cursorline = false,
   cursorcolumn = false,
   termguicolors = true,
@@ -36,11 +36,11 @@ local options = {
   incsearch = true,
   inccommand = "nosplit",
 
-	-- Indentation & Tabs
-	expandtab = true,
-	tabstop = 2,
-	shiftwidth = 2,
-	shiftround = true,
+  -- Indentation & Tabs
+  expandtab = true,
+  tabstop = 2,
+  shiftwidth = 2,
+  shiftround = true,
 
   -- Text wrapping
   wrap = true,
@@ -57,5 +57,5 @@ local options = {
 }
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+  vim.opt[k] = v
 end
