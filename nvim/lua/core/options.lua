@@ -86,3 +86,7 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+if vim.fn.has("nvim-0.10") == 1 then
+  opt.smoothscroll = true
+end
