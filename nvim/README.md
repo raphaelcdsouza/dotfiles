@@ -16,7 +16,6 @@ Personal Neovim configuration using Lua.
 │   └── plugins/             # Plugin configurations
 │       ├── tokionight.lua   # TokyoNight theme
 │       └── treesitter.lua   # Treesitter configuration
-├── *.example.lua            # Example configuration files
 └── README.md                # This file
 ```
 
