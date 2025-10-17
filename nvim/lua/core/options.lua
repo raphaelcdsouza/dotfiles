@@ -64,6 +64,11 @@ local options = {
   -- Visual indicators
   list = true,
   listchars = { leadmultispace = "│   ", multispace = "│ ", trail = "•", tab = "→ " },
+
+  -- Timing & Performance
+  timeoutlen = 500,
+  ttimeoutlen = 10,
+  updatetime = 250,
 }
 
 for k, v in pairs(options) do
