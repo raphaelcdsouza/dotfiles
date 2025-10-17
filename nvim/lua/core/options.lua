@@ -90,3 +90,8 @@ end
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
 end
+
+if vim.fn.executable("rg") then
+  vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+  vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+end
