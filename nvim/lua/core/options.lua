@@ -78,6 +78,9 @@ local options = {
   modeline = true,
   modelines = 5,
   modelineexpr = false,
+
+  -- Misc
+  shada = "!,'50,<50,s10,h,r/tmp",
 }
 
 for k, v in pairs(options) do
