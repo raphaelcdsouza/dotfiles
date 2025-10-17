@@ -13,8 +13,7 @@ local options = {
   cursorline = false,
   cursorcolumn = false,
   termguicolors = true,
-
-  -- showmode = false // disable this when using a statusline plugin
+  showmode = false,
   showmatch = true,
   matchtime = 2,
   number = true,
