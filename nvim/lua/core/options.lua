@@ -42,7 +42,7 @@ local options = {
   shiftround = true,
 
   -- Text wrapping
-  wrap = true,
+  wrap = false,
   linebreak = true,
   joinspaces = false,
 
