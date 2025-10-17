@@ -73,6 +73,11 @@ local options = {
   -- Scrolling
   scrolloff = 8,
   sidescrolloff = 10,
+
+  -- Modelines
+  modeline = true,
+  modelines = 5,
+  modelineexpr = false,
 }
 
 for k, v in pairs(options) do
