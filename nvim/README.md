@@ -14,6 +14,7 @@ Personal Neovim configuration using Lua.
 │   │   ├── options.lua      # Neovim options and settings
 │   │   └── README.md        # Core configuration documentation
 │   └── plugins/             # Plugin configurations
+│       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
 │       ├── tokionight.lua   # TokyoNight theme
 │       └── treesitter.lua   # Treesitter configuration
@@ -30,6 +31,10 @@ For detailed information about specific configurations, see:
 
 This configuration includes the following plugins:
 
+- **[vim-matchup](https://github.com/andymass/vim-matchup)** - Advanced bracket matching and navigation with treesitter integration
+  - Jump between matching pairs with `%`
+  - Highlights matching brackets and pairs
+  - Stopline set to 500 for performance optimization
 - **[Oil.nvim](https://github.com/stevearc/oil.nvim)** - File explorer that lets you edit your filesystem like a buffer
   - Keybindings: `-` to open parent directory, `<leader>-` for floating window
   - Shows hidden files by default with natural ordering
@@ -65,8 +70,15 @@ ln -s /path/to/your/dotfiles/nvim ~/.config/nvim
 
 - `init.lua` - Main configuration entry point
 - `lua/core/bootstrap.lua` - Lazy.nvim plugin manager setup
-- `lua/core/options.lua` - Editor options and settings
+- `lua/core/options.lua` - Editor options and settings (includes disabled built-in plugins for performance)
 - `lua/plugins/*.lua` - Individual plugin configurations
+
+## Performance Optimizations
+
+Built-in Neovim plugins are disabled to improve startup performance and reduce conflicts with custom plugins:
+- **netrw** - Replaced by Oil.nvim for file exploration
+- **matchit/matchparen** - Replaced by vim-matchup for advanced bracket matching
+- Other unused built-ins (gzip, tar, zip, vimball, tutor, etc.) are also disabled
 
 ## Example Files
 

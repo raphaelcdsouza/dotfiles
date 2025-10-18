@@ -136,7 +136,26 @@ The following options are set conditionally based on Neovim version or system ca
 - **`grepprg`** = `"rg --vimgrep --no-heading --smart-case"` - Set if ripgrep (`rg`) is installed
 - **`grepformat`** = `"%f:%l:%c:%m,%f:%l:%m"` - Set if ripgrep (`rg`) is installed
 
+### Disabled Built-in Plugins
+
+The following built-in Neovim plugins are disabled for performance optimization and to avoid conflicts with custom plugins:
+
+- `2html_plugin` - HTML conversion
+- `getscript` / `getscriptPlugin` - Script downloading
+- `gzip` - Gzip file handling
+- `logipat` - Logical patterns
+- `matchit` - Extended bracket matching (replaced by vim-matchup)
+- `matchparen` - Bracket highlighting (replaced by vim-matchup)
+- `netrw` / `netrwPlugin` / `netrwFileHandlers` / `netrwSettings` - File explorer (replaced by Oil.nvim)
+- `tar` / `tarPlugin` - Tar archive handling
+- `vimball` / `vimballPlugin` - Vimball package format
+- `zip` / `zipPlugin` - Zip archive handling
+- `rrhelper` - Remote helper
+- `spellfile_plugin` - Spell file downloading
+- `loaded_remote_plugins` - Remote plugin loading
+- `loaded_tutor_mode_plugin` - Tutorial mode
+
 ---
 
-*Last updated: Tue, 14 Oct 2025 - 11:03PM*
+*Last updated: Fri, 17 Oct 2025 - 5:35PM*
 
