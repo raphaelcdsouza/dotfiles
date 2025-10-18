@@ -1,3 +1,6 @@
+-- Filename: cmp.lua
+-- Last change: Fri, 17 Oct 2025, 11:06PM
+
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
