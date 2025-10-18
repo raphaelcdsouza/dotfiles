@@ -11,10 +11,12 @@ Personal Neovim configuration using Lua.
 ├── lua/
 │   ├── core/                # Core configuration
 │   │   ├── bootstrap.lua    # Plugin manager bootstrap
+│   │   ├── coffeescript.lua # CoffeeScript autocommands and keybindings
 │   │   ├── options.lua      # Neovim options and settings
 │   │   └── README.md        # Core configuration documentation
 │   └── plugins/             # Plugin configurations
 │       ├── cmp.lua          # Autocompletion configuration
+│       ├── coffeescript.lua # CoffeeScript syntax support
 │       ├── lsp.lua          # LSP server configuration
 │       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
@@ -46,6 +48,9 @@ This configuration includes the following plugins:
 - **[lazydev.nvim](https://github.com/folke/lazydev.nvim)** - Neovim Lua development support (modern neodev replacement)
 - **[fidget.nvim](https://github.com/j-hui/fidget.nvim)** - LSP progress notifications
 - **[schemastore.nvim](https://github.com/b0o/schemastore.nvim)** - JSON/YAML schema support
+- **[vim-coffee-script](https://github.com/kchmck/vim-coffee-script)** - CoffeeScript syntax highlighting and support
+  - Auto-compile on save with error notifications
+  - **Keybindings**: `<leader>cc` (compile), `<leader>cj` (show JS), `<leader>cr` (run), `<leader>cl` (lint)
 
 ### Completion & Snippets
 
@@ -118,6 +123,7 @@ Out of the box support for:
 - Tailwind CSS
 - JSON/YAML (with schema validation)
 - Lua (optimized for Neovim config)
+- CoffeeScript (with auto-compile and custom keybindings)
 
 ## Configuration Files
 

@@ -5,6 +5,7 @@ This directory contains core Neovim configuration files.
 ## Files
 
 - `bootstrap.lua` - Plugin manager bootstrap configuration
+- `coffeescript.lua` - CoffeeScript autocommands, keybindings, and filetype detection
 - `options.lua` - Neovim options and settings
 
 ## Options Reference
@@ -155,7 +156,25 @@ The following built-in Neovim plugins are disabled for performance optimization 
 - `loaded_remote_plugins` - Remote plugin loading
 - `loaded_tutor_mode_plugin` - Tutorial mode
 
+### CoffeeScript Configuration
+
+The `coffeescript.lua` file provides CoffeeScript development support:
+
+#### Auto-compilation
+- Automatically compiles `.coffee` files to JavaScript on save
+- Displays success/error notifications
+
+#### Keybindings
+Available in CoffeeScript buffers:
+- `<leader>cc` - Compile current CoffeeScript file
+- `<leader>cj` - Show compiled JavaScript output
+- `<leader>cr` - Run CoffeeScript file
+- `<leader>cl` - Lint with coffeelint (if installed)
+
+#### Filetype Detection
+- Registers `.coffee` extension as CoffeeScript filetype
+
 ---
 
-*Last updated: Fri, 17 Oct 2025 - 5:35PM*
+*Last updated: Fri, 17 Oct 2025 - 11:07PM*
 
