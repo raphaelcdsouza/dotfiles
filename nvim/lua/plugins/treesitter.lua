@@ -11,6 +11,7 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
       folds = { enable = true },
+      matchup = { enable = true },
     })
   end
 }
