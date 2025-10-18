@@ -14,6 +14,7 @@ Personal Neovim configuration using Lua.
 │   │   ├── options.lua      # Neovim options and settings
 │   │   └── README.md        # Core configuration documentation
 │   └── plugins/             # Plugin configurations
+│       ├── oil.lua          # Oil.nvim file explorer
 │       ├── tokionight.lua   # TokyoNight theme
 │       └── treesitter.lua   # Treesitter configuration
 └── README.md                # This file
@@ -24,6 +25,17 @@ Personal Neovim configuration using Lua.
 For detailed information about specific configurations, see:
 
 - **[Core Configuration](lua/core/README.md)** - Complete reference of all Neovim options and settings configured in `options.lua`
+
+## Plugins
+
+This configuration includes the following plugins:
+
+- **[Oil.nvim](https://github.com/stevearc/oil.nvim)** - File explorer that lets you edit your filesystem like a buffer
+  - Keybindings: `-` to open parent directory, `<leader>-` for floating window
+  - Shows hidden files by default with natural ordering
+  - Includes mini.icons for file icons
+- **[TokyoNight](https://github.com/folke/tokyonight.nvim)** - Clean, dark Neovim theme with multiple variants
+- **[Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** - Advanced syntax highlighting and code understanding
 
 ## Setup
 
