@@ -17,18 +17,25 @@ Personal Neovim configuration using Lua.
 │   └── plugins/             # Plugin configurations
 │       ├── autopairs.lua    # Auto-pairing brackets and quotes
 │       ├── autotag.lua      # Auto-close and rename HTML/JSX tags
+│       ├── bufferline.lua   # Buffer tabs
 │       ├── cmp.lua          # Autocompletion configuration
 │       ├── coffeescript.lua # CoffeeScript syntax support
 │       ├── colorizer.lua    # Color preview and highlighting
 │       ├── comment.lua      # Smart commenting
+│       ├── flash.lua        # Fast cursor movement
 │       ├── gitsigns.lua     # Git integration and signs
 │       ├── indent-blankline.lua # Indentation guides
 │       ├── lsp.lua          # LSP server configuration
+│       ├── lualine.lua      # Statusline
 │       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
+│       ├── spectre.lua      # Search and replace
+│       ├── surround.lua     # Surround text objects
 │       ├── telescope.lua    # Telescope fuzzy finder
+│       ├── todo-comments.lua # TODO highlighting
 │       ├── tokionight.lua   # TokyoNight theme
-│       └── treesitter.lua   # Treesitter configuration
+│       ├── treesitter.lua   # Treesitter configuration
+│       └── whichkey.lua     # Keybinding hints
 └── README.md                # This file
 ```
 
@@ -99,6 +106,21 @@ This configuration includes the following plugins:
   - Keybindings: `-` to open parent directory, `<leader>-` for floating window
   - Shows hidden files by default with natural ordering
   - Includes mini.icons for file icons
+- **[flash.nvim](https://github.com/folke/flash.nvim)** - Lightning-fast cursor movement
+  - `s` - Flash jump to any location
+  - `S` - Flash treesitter jump (select nodes)
+- **[nvim-spectre](https://github.com/nvim-pack/nvim-spectre)** - Project-wide search and replace
+  - `<leader>S` - Toggle Spectre
+  - `<leader>sw` - Search current word
+- **[mini.surround](https://github.com/echasnovski/mini.surround)** - Surround text with brackets, quotes, tags
+  - `sa` - Add surrounding (e.g., `saiw"` to surround word with quotes)
+  - `sd` - Delete surrounding
+  - `sr` - Replace surrounding
+  - `sf`/`sF` - Find surrounding
+- **[which-key.nvim](https://github.com/folke/which-key.nvim)** - Keybinding hints and documentation
+  - Shows available keybindings after pressing leader key
+  - Organizes commands into logical groups
+  - Modern preset with rounded borders
 
 ### UI & Syntax
 
@@ -117,6 +139,21 @@ This configuration includes the following plugins:
   - Shows indent levels with vertical lines
   - Highlights current scope with start and end markers
   - Excluded from special buffers (help, dashboard, lazy, mason)
+- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** - Fast and customizable statusline
+  - Shows mode, branch, diff, diagnostics
+  - Displays filename, encoding, fileformat, filetype
+  - Progress and location indicators
+  - TokyoNight theme integration
+- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** - Buffer tabs with LSP diagnostics
+  - `Tab` - Next buffer
+  - `S-Tab` - Previous buffer
+  - `<leader>bd` - Delete buffer
+  - Shows LSP diagnostics in tabs
+- **[todo-comments.nvim](https://github.com/folke/todo-comments.nvim)** - Highlight and navigate TODO comments
+  - Highlights TODO, FIXME, NOTE, HACK, WARNING, PERF, TEST
+  - `]t` - Next todo comment
+  - `[t` - Previous todo comment
+  - `<leader>ft` - Find TODOs with Telescope
 
 ## Setup
 
@@ -172,9 +209,12 @@ Seamless Git workflow without leaving Neovim:
 
 Improve code readability and aesthetics:
 
+- **Statusline**: Beautiful statusline showing mode, branch, diagnostics, file info, and location
+- **Buffer Tabs**: Visual buffer tabs with LSP diagnostics integration
 - **Color Preview**: See colors inline for hex, RGB, HSL, and Tailwind classes
 - **Indentation Guides**: Visual guides for code structure with scope highlighting
 - **Git Signs**: Clear visual indicators for file changes in the gutter
+- **TODO Highlights**: Colorful highlighting for TODO, FIXME, NOTE, and other comment keywords
 
 ### Editing Productivity
 
@@ -183,8 +223,19 @@ Enhance your editing workflow with smart automation:
 - **Auto-pairing**: Automatically close brackets, quotes, and parentheses with smart spacing
 - **Smart Commenting**: Comment/uncomment code with `gcc` (line) or `gbc` (block), works with any language including JSX/TSX
 - **Tag Management**: Auto-close and rename HTML/JSX tags simultaneously
+- **Surround Operations**: Add, delete, or replace surrounding brackets, quotes, or tags with `sa`, `sd`, `sr`
 - **Motion Support**: Use operators with motions (e.g., `gc3j` to comment 3 lines)
 - **Context Awareness**: Treesitter integration ensures pairing and commenting work correctly in any context
+
+### Navigation & Search
+
+Powerful tools for moving around and finding what you need:
+
+- **Flash Movement**: Jump to any location with `s` or use treesitter-aware jumps with `S`
+- **Project-wide Search**: Find and replace across entire project with Spectre (`<leader>S`)
+- **TODO Management**: Highlight and navigate TODO comments with `]t`/`[t`, search all TODOs with `<leader>ft`
+- **Keybinding Discovery**: See available commands and their descriptions with which-key after pressing leader
+- **Buffer Navigation**: Quickly switch between buffers with Tab/S-Tab
 
 ### LSP & Completion
 
