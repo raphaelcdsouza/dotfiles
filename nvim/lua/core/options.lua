@@ -63,8 +63,12 @@ local options = {
 
   -- Visual indicators
   list = true,
-  listchars = { leadmultispace = "│   ", multispace = "│ ", trail = "•", tab = "→ " },
-
+  listchars = {
+    tab = "→ ",      -- Show tabs clearly
+    trail = "•",     -- Show trailing spaces (catch mistakes!)
+    extends = "⟩",   -- Line extends beyond screen
+    precedes = "⟨",  -- Line starts before screen
+  },
   -- Timing & Performance
   timeoutlen = 500,
   ttimeoutlen = 10,
