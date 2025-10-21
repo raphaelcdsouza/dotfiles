@@ -15,8 +15,11 @@ Personal Neovim configuration using Lua.
 │   │   ├── options.lua      # Neovim options and settings
 │   │   └── README.md        # Core configuration documentation
 │   └── plugins/             # Plugin configurations
+│       ├── autopairs.lua    # Auto-pairing brackets and quotes
+│       ├── autotag.lua      # Auto-close and rename HTML/JSX tags
 │       ├── cmp.lua          # Autocompletion configuration
 │       ├── coffeescript.lua # CoffeeScript syntax support
+│       ├── comment.lua      # Smart commenting
 │       ├── lsp.lua          # LSP server configuration
 │       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
@@ -70,6 +73,20 @@ This configuration includes the following plugins:
   - **LSP Navigation**: `gr` (references), `gd` (definitions), `gi` (implementations), `gt` (type definitions), `<leader>ds` (document symbols), `<leader>ws` (workspace symbols), `<leader>dd` (diagnostics)
   - **Neovim Internals**: `<leader>fh` (help), `<leader>fc` (commands), `<leader>fk` (keymaps), `<leader>fo` (options), `<leader>ft` (themes)
   - **Extensions**: FZF native sorter, UI select for code actions, project management
+- **[Comment.nvim](https://github.com/numToStr/Comment.nvim)** - Smart and powerful commenting
+  - **Keybindings**: `gcc` (toggle line), `gbc` (toggle block), `gc` (line operator), `gb` (block operator), `gcO` (above), `gco` (below), `gcA` (end of line)
+  - JSX/TSX support via nvim-ts-context-commentstring
+  - Works with motions (e.g., `gc3j` to comment 3 lines down)
+- **[nvim-autopairs](https://github.com/windwp/nvim-autopairs)** - Automatic bracket and quote pairing
+  - Auto-close brackets, quotes, and tags
+  - Smart spacing inside brackets: `(|)` → `( | )`
+  - Arrow function support for JS/TS: `() =>` → `() => { | }`
+  - Treesitter integration for context-aware pairing
+  - Integrates with nvim-cmp for completion
+- **[nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)** - Auto-close and rename HTML/JSX tags
+  - Automatically close tags when typing `>`
+  - Rename paired tags simultaneously
+  - Works with HTML, JSX, TSX, and other XML-like formats
 - **[vim-matchup](https://github.com/andymass/vim-matchup)** - Advanced bracket matching and navigation with treesitter integration
   - Jump between matching pairs with `%`
   - Highlights matching brackets and pairs
@@ -122,6 +139,16 @@ Telescope provides powerful fuzzy finding capabilities:
 - **Live Preview**: See file contents, git diffs, and more in preview window
 - **Multi-select**: Select multiple items with Tab and send to quickfix list
 - **Smart Filtering**: Ignore node_modules, .git, and build directories automatically
+
+### Editing Productivity
+
+Enhance your editing workflow with smart automation:
+
+- **Auto-pairing**: Automatically close brackets, quotes, and parentheses with smart spacing
+- **Smart Commenting**: Comment/uncomment code with `gcc` (line) or `gbc` (block), works with any language including JSX/TSX
+- **Tag Management**: Auto-close and rename HTML/JSX tags simultaneously
+- **Motion Support**: Use operators with motions (e.g., `gc3j` to comment 3 lines)
+- **Context Awareness**: Treesitter integration ensures pairing and commenting work correctly in any context
 
 ### LSP & Completion
 
