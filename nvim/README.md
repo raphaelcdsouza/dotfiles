@@ -20,6 +20,7 @@ Personal Neovim configuration using Lua.
 │       ├── lsp.lua          # LSP server configuration
 │       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
+│       ├── telescope.lua    # Telescope fuzzy finder
 │       ├── tokionight.lua   # TokyoNight theme
 │       └── treesitter.lua   # Treesitter configuration
 └── README.md                # This file
@@ -62,6 +63,13 @@ This configuration includes the following plugins:
 
 ### Editor Enhancement
 
+- **[Telescope](https://github.com/nvim-telescope/telescope.nvim)** - Highly extendable fuzzy finder for files, buffers, LSP, and more
+  - **File Operations**: `<leader>ff` (find files), `<leader>fg` (live grep), `<leader>fw` (grep word), `<leader>fr` (recent files), `<leader>/` (search buffer)
+  - **Buffer/Project**: `<leader>fb` (buffers), `<leader>fp` (projects)
+  - **Git Integration**: `<leader>gc` (commits), `<leader>gb` (branches), `<leader>gs` (status)
+  - **LSP Navigation**: `gr` (references), `gd` (definitions), `gi` (implementations), `gt` (type definitions), `<leader>ds` (document symbols), `<leader>ws` (workspace symbols), `<leader>dd` (diagnostics)
+  - **Neovim Internals**: `<leader>fh` (help), `<leader>fc` (commands), `<leader>fk` (keymaps), `<leader>fo` (options), `<leader>ft` (themes)
+  - **Extensions**: FZF native sorter, UI select for code actions, project management
 - **[vim-matchup](https://github.com/andymass/vim-matchup)** - Advanced bracket matching and navigation with treesitter integration
   - Jump between matching pairs with `%`
   - Highlights matching brackets and pairs
@@ -101,6 +109,19 @@ ln -s /path/to/your/dotfiles/nvim ~/.config/nvim
 **Note:** This method is specifically for macOS/Unix. Replace `/path/to/your/dotfiles/nvim` with the actual path to your dotfiles directory.
 
 ## Features
+
+### Fuzzy Finding & Navigation
+
+Telescope provides powerful fuzzy finding capabilities:
+
+- **File Navigation**: Quickly find and open files with `<leader>ff`, search file contents with `<leader>fg`
+- **Buffer Management**: Switch between open buffers with `<leader>fb`
+- **Project Management**: Navigate between projects with `<leader>fp`
+- **Git Integration**: Browse commits, branches, and status without leaving Neovim
+- **LSP Integration**: Find references, definitions, and symbols across your codebase
+- **Live Preview**: See file contents, git diffs, and more in preview window
+- **Multi-select**: Select multiple items with Tab and send to quickfix list
+- **Smart Filtering**: Ignore node_modules, .git, and build directories automatically
 
 ### LSP & Completion
 
