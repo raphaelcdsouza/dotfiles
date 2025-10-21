@@ -1,5 +1,5 @@
 -- Filename: lsp.lua
--- Last change: Fri, 17 Oct 2025, 7:13PM
+-- Last change: Mon, 20 Oct 2025, 10:51PM
 
 return {
   -- Mason: LSP installer
@@ -64,8 +64,20 @@ return {
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
+      -- Suppress lspconfig deprecation warning (Neovim 0.11+)
+      -- TODO: Migrate to vim.lsp.config when it's stable and documented
+      local notify = vim.notify
+      vim.notify = function(msg, ...)
+        if msg:match("lspconfig") then
+          return
+        end
+        notify(msg, ...)
+      end
+
       local lspconfig = require('lspconfig')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
+
+      vim.notify = notify
 
       -- Capabilities for autocompletion
       local capabilities = cmp_nvim_lsp.default_capabilities()
