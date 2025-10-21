@@ -192,7 +192,29 @@ return {
       -- Tailwind CSS
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
-        filetypes = { 'html', 'css', 'scss', 'javascriptreact', 'typescriptreact' },
+        filetypes = {
+          'html',
+          'css',
+          'scss',
+          'javascript',
+          'javascriptreact',
+          'typescript',
+          'typescriptreact',
+          'vue',
+          'svelte',
+        },
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              classRegex = {
+                -- Enable in more places
+                { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+              },
+            },
+          },
+        },
       })
 
       -- ESLint
