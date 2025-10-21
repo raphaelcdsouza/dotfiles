@@ -19,7 +19,10 @@ Personal Neovim configuration using Lua.
 │       ├── autotag.lua      # Auto-close and rename HTML/JSX tags
 │       ├── cmp.lua          # Autocompletion configuration
 │       ├── coffeescript.lua # CoffeeScript syntax support
+│       ├── colorizer.lua    # Color preview and highlighting
 │       ├── comment.lua      # Smart commenting
+│       ├── gitsigns.lua     # Git integration and signs
+│       ├── indent-blankline.lua # Indentation guides
 │       ├── lsp.lua          # LSP server configuration
 │       ├── matchup.lua      # vim-matchup bracket matching
 │       ├── oil.lua          # Oil.nvim file explorer
@@ -46,6 +49,7 @@ This configuration includes the following plugins:
   - **Keybindings**: `gd` (definition), `gr` (references), `K` (hover), `<leader>ca` (code action), `<leader>rn` (rename), `[d`/`]d` (diagnostics)
   - Custom diagnostic signs and rounded borders
   - Inlay hints for TypeScript/JavaScript
+  - Enhanced Tailwind CSS support with cva(), cx(), clsx() utilities and Vue/Svelte support
 - **[Mason](https://github.com/williamboman/mason.nvim)** - LSP server installer and manager
   - Automatic installation of configured language servers
   - Rounded border UI with custom icons
@@ -100,6 +104,19 @@ This configuration includes the following plugins:
 
 - **[TokyoNight](https://github.com/folke/tokyonight.nvim)** - Clean, dark Neovim theme with multiple variants
 - **[Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** - Advanced syntax highlighting and code understanding
+- **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)** - Git integration with sign column indicators
+  - **Navigation**: `]c` (next hunk), `[c` (previous hunk)
+  - **Actions**: `<leader>hs` (stage), `<leader>hr` (reset), `<leader>hp` (preview), `<leader>hb` (blame), `<leader>hd` (diff)
+  - **Toggles**: `<leader>tb` (line blame), `<leader>td` (deleted lines)
+  - Text object: `ih` (select hunk)
+- **[nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors)** - Live color preview
+  - Highlights hex colors, RGB, HSL, named colors
+  - Tailwind CSS color support
+  - Background rendering for better visibility
+- **[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)** - Indentation guides
+  - Shows indent levels with vertical lines
+  - Highlights current scope with start and end markers
+  - Excluded from special buffers (help, dashboard, lazy, mason)
 
 ## Setup
 
@@ -140,6 +157,25 @@ Telescope provides powerful fuzzy finding capabilities:
 - **Multi-select**: Select multiple items with Tab and send to quickfix list
 - **Smart Filtering**: Ignore node_modules, .git, and build directories automatically
 
+### Git Integration
+
+Seamless Git workflow without leaving Neovim:
+
+- **Visual Indicators**: See added, changed, and deleted lines in the sign column
+- **Hunk Navigation**: Jump between changes with `]c` and `[c`
+- **Stage & Reset**: Stage or reset hunks with `<leader>hs` and `<leader>hr`
+- **Blame & Diff**: View blame info with `<leader>hb` and diff with `<leader>hd`
+- **Preview Changes**: Preview hunks inline with `<leader>hp`
+- **Text Objects**: Use `ih` to select hunks for operations
+
+### Visual Enhancements
+
+Improve code readability and aesthetics:
+
+- **Color Preview**: See colors inline for hex, RGB, HSL, and Tailwind classes
+- **Indentation Guides**: Visual guides for code structure with scope highlighting
+- **Git Signs**: Clear visual indicators for file changes in the gutter
+
 ### Editing Productivity
 
 Enhance your editing workflow with smart automation:
@@ -168,7 +204,7 @@ This configuration provides a complete IDE-like experience with:
 Out of the box support for:
 - TypeScript/JavaScript (React included)
 - HTML/CSS/SCSS
-- Tailwind CSS
+- Tailwind CSS (enhanced with cva, cx, clsx utilities + Vue/Svelte support)
 - JSON/YAML (with schema validation)
 - Lua (optimized for Neovim config)
 - CoffeeScript (with auto-compile and custom keybindings)
