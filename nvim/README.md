@@ -7,12 +7,16 @@ Personal Neovim configuration using Lua.
 ```
 .
 ├── init.lua                 # Main entry point
+├── KEYMAPS.md               # Complete keybindings reference
 ├── lazy-lock.json           # Plugin version lockfile
 ├── lua/
 │   ├── core/                # Core configuration
+│   │   ├── autocommands.lua # Automatic commands
 │   │   ├── bootstrap.lua    # Plugin manager bootstrap
 │   │   ├── coffeescript.lua # CoffeeScript autocommands and keybindings
+│   │   ├── keymaps.lua      # Global keybindings
 │   │   ├── options.lua      # Neovim options and settings
+│   │   ├── utils.lua        # Utility functions
 │   │   └── README.md        # Core configuration documentation
 │   └── plugins/             # Plugin configurations
 │       ├── autopairs.lua    # Auto-pairing brackets and quotes
@@ -44,6 +48,7 @@ Personal Neovim configuration using Lua.
 For detailed information about specific configurations, see:
 
 - **[Core Configuration](lua/core/README.md)** - Complete reference of all Neovim options and settings configured in `options.lua`
+- **[Keymaps Reference](KEYMAPS.md)** - Complete list of all keybindings organized by category
 
 ## Plugins
 
