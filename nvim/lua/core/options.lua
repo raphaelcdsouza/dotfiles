@@ -128,3 +128,26 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+opt.guicursor = {
+  "n-v:block",
+  "i-c-ci-ve:ver25",
+  "r-cr:hor20",
+  "o:hor50",
+  "i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  "sm:block-blinkwait175-blinkoff150-blinkon175",
+}
+
+-- window-local options
+local window_options = {
+  numberwidth = 2,
+  number = true,
+  relativenumber = true,
+  linebreak = true,
+  cursorline = true,
+  foldenable = false,
+}
+
+for k, v in pairs(window_options) do
+  vim.wo[k] = v
+end
