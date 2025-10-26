@@ -14,8 +14,37 @@ Dotfiles are configuration files (typically prefixed with a dot `.` on Unix-like
 
 This repository currently contains configurations for:
 
-- **[Neovim](nvim/README.md)** - Personal Neovim configuration using Lua, including plugin management with lazy.nvim
+- **[Neovim](nvim/README.md)** - Cursor-style AI-powered Neovim configuration using Lua, featuring:
+  - **AI Assistant** (Avante.nvim) - ChatGPT/Claude integration with diff mode
+  - **GitHub Copilot** - Inline code suggestions with Tab line-by-line acceptance
+  - **Multi-cursor** support (vim-visual-multi)
+  - **LSP** with auto-installation (TypeScript, HTML, CSS, Tailwind, JSON, YAML, Lua)
+  - **Telescope** fuzzy finder with git integration
+  - **Oil.nvim** file explorer
+  - Plugin management with lazy.nvim
+  
 - **Zsh** (`.zshrc`) - Zsh shell configuration with oh-my-zsh, spaceship theme, and development tools (asdf, NVM, Zinit plugins)
+
+## Neovim Highlights
+
+### 🤖 AI-Powered Coding
+- **Avante AI Chat** - Cursor-style AI assistant with diff mode for reviewing changes
+- **GitHub Copilot** - Line-by-line code suggestions (Tab to accept)
+- **Provider switching** - Toggle between Claude and Copilot models on the fly
+
+### ✨ Key Features
+- **Multi-cursor editing** - Select and edit multiple occurrences simultaneously
+- **VSCode-style line moving** - `Option+↑/↓` to move lines
+- **Git integration** - Visual indicators, blame, diff, and Telescope git commands
+- **Smart completions** - LSP-powered autocompletion with snippets
+- **Interactive rename** - Live preview of symbol renames across your project
+- **Project-wide search** - Find and replace across entire codebase
+
+### 🎨 Beautiful UI
+- TokyoNight theme
+- Statusline with git status and LSP diagnostics
+- Color preview for hex/RGB/HSL/Tailwind colors
+- Indentation guides with scope highlighting
 
 ## Usage
 
@@ -34,6 +63,19 @@ ln -s /path/to/dotfiles/.zshrc ~/.zshrc
 ```
 
 Refer to each configuration's README for specific setup instructions.
+
+## Quick Start (Neovim)
+
+```bash
+# Clone or symlink to your config directory
+ln -s /path/to/dotfiles/nvim ~/.config/nvim
+
+# Launch Neovim - plugins auto-install
+nvim
+
+# Check the keymap reference
+:edit ~/.config/nvim/KEYMAPS.md
+```
 
 ## Contributing
 

@@ -1,5 +1,5 @@
 -- Filename: lsp.lua
--- Last change: Mon, 20 Oct 2025, 10:51PM
+-- Last change: Sat, 25 Oct 2025, 4:44PM
 
 return {
   -- Mason: LSP installer
@@ -33,6 +33,7 @@ return {
         'jsonls',
         'yamlls',
         'lua_ls',
+        'bashls',
       },
       automatic_installation = true,
     },
@@ -65,19 +66,21 @@ return {
     },
     config = function()
       -- Suppress lspconfig deprecation warning (Neovim 0.11+)
-      -- TODO: Migrate to vim.lsp.config when it's stable and documented
-      local notify = vim.notify
+      -- Temporarily suppress deprecation warnings from vim.deprecate
+      local deprecated_orig = vim.deprecate
+      vim.deprecate = function() end
+      
+      -- Also suppress notifications
+      local notify_orig = vim.notify
       vim.notify = function(msg, ...)
-        if msg:match("lspconfig") then
+        if type(msg) == "string" and (msg:match("lspconfig") or msg:match("deprecated")) then
           return
         end
-        notify(msg, ...)
+        notify_orig(msg, ...)
       end
 
       local lspconfig = require('lspconfig')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
-      vim.notify = notify
 
       -- Capabilities for autocompletion
       local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -119,7 +122,7 @@ return {
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set('n', '<leader>K', vim.lsp.buf.signature_help, opts)
           vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+          -- <leader>rn is now handled by inc-rename.lua for better UX
           vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, opts)
           vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, opts)
           vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
@@ -265,6 +268,21 @@ return {
           },
         },
       })
+
+      -- Bash/Shell scripts
+      lspconfig.bashls.setup({
+        capabilities = capabilities,
+        filetypes = { 'sh', 'bash', 'zsh' },
+        settings = {
+          bashIde = {
+            globPattern = '*@(.sh|.inc|.bash|.command|.zsh)',
+          },
+        },
+      })
+
+      -- Restore original functions at the end
+      vim.deprecate = deprecated_orig
+      vim.notify = notify_orig
     end,
   },
 

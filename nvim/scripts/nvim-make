@@ -1,0 +1,17 @@
+#!/bin/bash
+# Neovim plugin Make wrapper
+# Ensures Make uses Node 22+ for any Node-based build steps
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Use Node 22 regardless of project .nvmrc
+nvm use 22 > /dev/null 2>&1
+
+# Set PATH to use our Node wrapper
+export PATH="$(dirname "$0"):$PATH"
+
+# Execute Make with provided arguments
+exec /usr/bin/make "$@"
+

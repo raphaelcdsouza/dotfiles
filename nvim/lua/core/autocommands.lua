@@ -1,5 +1,5 @@
 -- Filename: autocommands.lua
--- Last change: Tue, 21 Oct 2025, 10:45PM
+-- Last change: Sat, 25 Oct 2025, 4:37PM
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -18,3 +18,5 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Override filetype formatoptions"
 })
+
+

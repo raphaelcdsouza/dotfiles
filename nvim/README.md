@@ -1,53 +1,108 @@
 # Neovim Configuration
 
-Personal Neovim configuration using Lua.
+Cursor-style AI-powered Neovim configuration using Lua.
+
+## ✨ Highlights
+
+### 🤖 AI-Powered Development
+- **Avante AI Chat** - Cursor-style AI assistant with diff mode for code review
+  - Toggle between Claude and Copilot (GitHub Models)
+  - Show diffs before applying changes
+  - Chat with AI about your code
+  - Default: Copilot with GPT-4o
+  
+- **GitHub Copilot** - Inline code suggestions
+  - Tab to accept line-by-line (Cursor-style)
+  - Ctrl+Tab to accept entire suggestion
+  - Auto-completes as you type
+  
+### ⚡ Modern Editing Features
+- **Multi-cursor editing** - Select and edit multiple occurrences (`<leader>md`)
+- **VSCode-style line moving** - `Option+↑/↓` to swap lines
+- **Interactive LSP rename** - Live preview of symbol renames (`<leader>rn`)
+- **Smart completions** - Context-aware autocompletion with LSP
+- **Project-wide search** - Find and replace across codebase (Spectre)
+
+### 🎨 Beautiful UI
+- TokyoNight theme with multiple variants
+- Statusline showing git status, LSP diagnostics, and file info
+- Color preview for hex, RGB, HSL, and Tailwind colors
+- Indentation guides with scope highlighting
+- Buffer tabs with diagnostics
 
 ## Directory Structure
 
 ```
 .
 ├── init.lua                 # Main entry point
+├── KEYMAPS.md               # Complete keybindings reference
 ├── lazy-lock.json           # Plugin version lockfile
-├── lua/
-│   ├── core/                # Core configuration
-│   │   ├── bootstrap.lua    # Plugin manager bootstrap
-│   │   ├── coffeescript.lua # CoffeeScript autocommands and keybindings
-│   │   ├── options.lua      # Neovim options and settings
-│   │   └── README.md        # Core configuration documentation
-│   └── plugins/             # Plugin configurations
-│       ├── autopairs.lua    # Auto-pairing brackets and quotes
-│       ├── autotag.lua      # Auto-close and rename HTML/JSX tags
-│       ├── bufferline.lua   # Buffer tabs
-│       ├── cmp.lua          # Autocompletion configuration
-│       ├── coffeescript.lua # CoffeeScript syntax support
-│       ├── colorizer.lua    # Color preview and highlighting
-│       ├── comment.lua      # Smart commenting
-│       ├── flash.lua        # Fast cursor movement
-│       ├── gitsigns.lua     # Git integration and signs
-│       ├── indent-blankline.lua # Indentation guides
-│       ├── lsp.lua          # LSP server configuration
-│       ├── lualine.lua      # Statusline
-│       ├── matchup.lua      # vim-matchup bracket matching
-│       ├── oil.lua          # Oil.nvim file explorer
-│       ├── spectre.lua      # Search and replace
-│       ├── surround.lua     # Surround text objects
-│       ├── telescope.lua    # Telescope fuzzy finder
-│       ├── todo-comments.lua # TODO highlighting
-│       ├── tokionight.lua   # TokyoNight theme
-│       ├── treesitter.lua   # Treesitter configuration
-│       └── whichkey.lua     # Keybinding hints
-└── README.md                # This file
+├── scripts/                 # Node.js wrapper scripts
+│   ├── copilot-node        # Copilot Node wrapper
+│   ├── nvim-make           # Make wrapper for plugins
+│   └── README.md           # Node isolation documentation
+└── lua/
+    ├── core/                # Core configuration
+    │   ├── autocommands.lua # Automatic commands
+    │   ├── bootstrap.lua    # Plugin manager bootstrap
+    │   ├── coffeescript.lua # CoffeeScript support
+    │   ├── keymaps.lua      # Global keybindings
+    │   ├── options.lua      # Neovim options and settings
+    │   ├── utils.lua        # Utility functions
+    │   └── README.md        # Core configuration docs
+    └── plugins/             # Plugin configurations
+        ├── avante.lua       # AI chat assistant (Cursor-style)
+        ├── copilot.lua      # GitHub Copilot integration
+        ├── cmp.lua          # Autocompletion
+        ├── lsp.lua          # LSP server configuration
+        ├── inc-rename.lua   # Interactive LSP rename
+        ├── multicursor.lua  # Multi-cursor support
+        ├── telescope.lua    # Fuzzy finder
+        ├── gitsigns.lua     # Git integration
+        ├── oil.lua          # File explorer
+        ├── spectre.lua      # Search and replace
+        ├── treesitter.lua   # Syntax highlighting
+        ├── autopairs.lua    # Auto-pairing brackets
+        ├── autotag.lua      # Auto-close HTML tags
+        ├── bufferline.lua   # Buffer tabs
+        ├── colorizer.lua    # Color preview
+        ├── comment.lua      # Smart commenting
+        ├── flash.lua        # Fast movement
+        ├── indent-blankline.lua # Indentation guides
+        ├── lualine.lua      # Statusline
+        ├── matchup.lua      # Bracket matching
+        ├── surround.lua     # Surround operations
+        ├── todo-comments.lua # TODO highlighting
+        ├── tokionight.lua   # Theme
+        └── whichkey.lua     # Keybinding hints
 ```
 
 ## Documentation
 
-For detailed information about specific configurations, see:
-
-- **[Core Configuration](lua/core/README.md)** - Complete reference of all Neovim options and settings configured in `options.lua`
+- **[KEYMAPS.md](KEYMAPS.md)** - Complete list of all keybindings by category
+- **[Core Configuration](lua/core/README.md)** - Neovim options and settings reference
+- **[Node.js Scripts](scripts/README.md)** - Node version isolation for plugins
 
 ## Plugins
 
 This configuration includes the following plugins:
+
+### 🤖 AI & Code Assistance
+
+- **[Avante.nvim](https://github.com/yetone/avante.nvim)** - Cursor-style AI chat assistant
+  - **Providers**: Claude (Anthropic API), Copilot (GitHub Models)
+  - **Models**: Claude 4.5 Sonnet, GPT-4o, and more
+  - **Features**: Diff mode, code editing, chat interface
+  - **Keybindings**: `<leader>aa` (toggle chat), `<leader>ae` (edit), `<leader>ap` (switch provider)
+  - **Diff Controls**: `co` (ours), `ct` (theirs), `ca` (accept all), `c0` (reject all)
+  - Node.js isolation for legacy project compatibility
+  
+- **[Copilot.lua](https://github.com/zbirenbaum/copilot.lua)** - GitHub Copilot integration
+  - **Tab behavior**: Accept one line at a time (Cursor-style)
+  - **Ctrl+Tab**: Accept entire suggestion
+  - **Alt+]** / **Alt+[**: Cycle through alternative suggestions
+  - Limited to 5 lines max per suggestion
+  - Node.js isolation for legacy project compatibility
 
 ### Language Support
 
@@ -76,6 +131,17 @@ This configuration includes the following plugins:
 - **[LuaSnip](https://github.com/L3MON4D3/LuaSnip)** - Snippet engine with friendly-snippets library
 
 ### Editor Enhancement
+
+- **[inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)** - Interactive LSP rename with live preview
+  - **Keybinding**: `<leader>rn` - Shows preview of all symbol renames before applying
+  - Real-time feedback as you type the new name
+  - Works across entire workspace
+  
+- **[vim-visual-multi](https://github.com/mg979/vim-visual-multi)** - Multi-cursor editing
+  - **Keybindings**: `<leader>md` (select next), `<leader>ma` (select all), `<leader>mk` (skip)
+  - **Navigation**: `Ctrl+j/k` to jump between cursors
+  - **Add cursors**: `Option+Shift+Up/Down` to add cursor above/below
+  - VSCode-like multi-cursor experience
 
 - **[Telescope](https://github.com/nvim-telescope/telescope.nvim)** - Highly extendable fuzzy finder for files, buffers, LSP, and more
   - **File Operations**: `<leader>ff` (find files), `<leader>fg` (live grep), `<leader>fw` (grep word), `<leader>fr` (recent files), `<leader>/` (search buffer)
@@ -204,6 +270,7 @@ Seamless Git workflow without leaving Neovim:
 - **Blame & Diff**: View blame info with `<leader>hb` and diff with `<leader>hd`
 - **Preview Changes**: Preview hunks inline with `<leader>hp`
 - **Text Objects**: Use `ih` to select hunks for operations
+- **Git-aware Navigation**: `<leader>gs` (changed files), `<leader>gf` (all git files)
 
 ### Visual Enhancements
 
@@ -216,14 +283,15 @@ Improve code readability and aesthetics:
 - **Git Signs**: Clear visual indicators for file changes in the gutter
 - **TODO Highlights**: Colorful highlighting for TODO, FIXME, NOTE, and other comment keywords
 
-### Editing Productivity
+### Code Editing Productivity
 
-Enhance your editing workflow with smart automation:
+Enhanced editing with automation and shortcuts:
 
 - **Auto-pairing**: Automatically close brackets, quotes, and parentheses with smart spacing
 - **Smart Commenting**: Comment/uncomment code with `gcc` (line) or `gbc` (block), works with any language including JSX/TSX
 - **Tag Management**: Auto-close and rename HTML/JSX tags simultaneously
 - **Surround Operations**: Add, delete, or replace surrounding brackets, quotes, or tags with `sa`, `sd`, `sr`
+- **VSCode-style line moving**: `Option+↑/↓` to move lines up/down (preserves selection in visual mode)
 - **Motion Support**: Use operators with motions (e.g., `gc3j` to comment 3 lines)
 - **Context Awareness**: Treesitter integration ensures pairing and commenting work correctly in any context
 
@@ -243,29 +311,140 @@ This configuration provides a complete IDE-like experience with:
 
 - **Automatic LSP Installation**: Mason automatically installs configured language servers on first launch
 - **Intelligent Autocompletion**: Context-aware completions from LSP, buffer, path, and snippets
+- **Tab Behavior**: Smart Tab key (Copilot line acceptance → completion navigation → snippet jump)
 - **Code Navigation**: Jump to definitions, references, implementations, and type definitions
 - **Diagnostics**: Real-time error and warning display with custom icons
 - **Code Actions**: Quick fixes and refactoring suggestions via `<leader>ca`
 - **Hover Documentation**: View documentation with `K`
-- **Rename Symbol**: Rename across project with `<leader>rn`
+- **Interactive Rename**: Live preview of symbol renames with `<leader>rn` (inc-rename.nvim)
 - **Inlay Hints**: Type hints for TypeScript/JavaScript (parameters, return types, variable types)
 
-### Supported Languages
+## Quick Reference
 
-Out of the box support for:
-- TypeScript/JavaScript (React included)
-- HTML/CSS/SCSS
-- Tailwind CSS (enhanced with cva, cx, clsx utilities + Vue/Svelte support)
-- JSON/YAML (with schema validation)
-- Lua (optimized for Neovim config)
-- CoffeeScript (with auto-compile and custom keybindings)
+### Most Used Keybindings
+
+```
+AI & Copilot:
+<leader>aa   → Toggle Avante AI chat
+<leader>ae   → Edit with AI (visual selection)
+<leader>ap   → Switch AI provider (Claude/Copilot)
+<Tab>        → Accept Copilot line / next completion
+<C-Tab>      → Accept entire Copilot suggestion
+
+Multi-cursor:
+<leader>md   → Select next occurrence
+<leader>ma   → Select all occurrences
+<leader>mu   → Remove last selection
+<C-j/k>      → Navigate between cursors
+
+Editing:
+Option+↑/↓   → Move line/selection up/down
+<leader>rn   → Interactive LSP rename
+<leader>ca   → Code action
+gcc          → Toggle comment
+sa/sd/sr     → Surround add/delete/replace
+
+Git:
+<leader>gs   → Git status (changed files)
+<leader>gf   → Git files (all tracked)
+<leader>hs   → Stage hunk
+]c / [c      → Next/prev hunk
+
+LSP:
+gd           → Go to definition
+gr           → Go to references
+gi           → Go to implementation
+K            → Hover docs
+[d / ]d      → Next/prev diagnostic
+
+Navigation:
+<leader>ff   → Find files
+<leader>fg   → Live grep
+<leader>fb   → Find buffers
+s            → Flash jump
+-            → Open file explorer (Oil)
+```
+
+## Node.js Version Isolation
+
+This configuration includes wrapper scripts that ensure Neovim plugins (Copilot, Avante) always use Node.js 22+, regardless of your project's `.nvmrc` file. This prevents plugins from breaking when working in legacy projects with older Node versions.
+
+See **[scripts/README.md](scripts/README.md)** for details.
+
+## Setup
+
+### Prerequisites
+
+- Neovim ≥ 0.9.0 (0.10+ recommended)
+- Node.js ≥ 22 (via NVM recommended for plugin isolation)
+- Git
+- A Nerd Font (for icons)
+- ripgrep (for Telescope live grep)
+- GitHub Copilot subscription (for Copilot features)
+- Anthropic API key (optional, for Claude in Avante)
+
+### Installation
+
+#### Option 1: Clone directly
+
+1. Clone this repository to your Neovim config directory:
+   ```bash
+   git clone <repository-url> ~/.config/nvim
+   ```
+
+2. Launch Neovim - plugins will be automatically installed via lazy.nvim:
+   ```bash
+   nvim
+   ```
+
+#### Option 2: Symbolic Link (macOS/Unix)
+
+If you manage your dotfiles in a separate directory, you can create a symbolic link:
+
+```bash
+ln -s /path/to/your/dotfiles/nvim ~/.config/nvim
+```
+
+**Note:** This method is specifically for macOS/Unix. Replace `/path/to/your/dotfiles/nvim` with the actual path to your dotfiles directory.
+
+### Post-Installation
+
+1. **Set up GitHub Copilot** (if using):
+   ```vim
+   :Copilot auth
+   ```
+
+2. **Set up Avante with Anthropic** (if using Claude):
+   ```bash
+   # Add to your ~/.zshrc or ~/.bashrc
+   export AVANTE_ANTHROPIC_API_KEY="your-api-key-here"
+   ```
+
+3. **Install Node.js 22** (for plugin isolation):
+   ```bash
+   nvm install 22
+   nvm alias default 22
+   ```
+
+4. **Make wrapper scripts executable**:
+   ```bash
+   chmod +x ~/.config/nvim/scripts/copilot-node
+   chmod +x ~/.config/nvim/scripts/nvim-make
+   ```
+
+5. **Check keymaps**:
+   ```vim
+   :edit ~/.config/nvim/KEYMAPS.md
+   ```
 
 ## Configuration Files
 
 - `init.lua` - Main configuration entry point
 - `lua/core/bootstrap.lua` - Lazy.nvim plugin manager setup
 - `lua/core/options.lua` - Editor options and settings (includes disabled built-in plugins for performance)
+- `lua/core/keymaps.lua` - Global keybindings
 - `lua/plugins/*.lua` - Individual plugin configurations
+- `scripts/*` - Node.js wrapper scripts for plugin isolation
 
 ## Performance Optimizations
 
@@ -274,7 +453,35 @@ Built-in Neovim plugins are disabled to improve startup performance and reduce c
 - **matchit/matchparen** - Replaced by vim-matchup for advanced bracket matching
 - Other unused built-ins (gzip, tar, zip, vimball, tutor, etc.) are also disabled
 
+## Troubleshooting
+
+### Copilot not working in legacy projects
+
+If Copilot fails when working in projects with old Node versions:
+1. Check wrapper script: `~/.config/nvim/scripts/copilot-node --version` (should show v22.x.x)
+2. Ensure script is executable: `chmod +x ~/.config/nvim/scripts/copilot-node`
+3. See [scripts/README.md](scripts/README.md) for detailed troubleshooting
+
+### Avante serialization errors
+
+If you get serialization errors when opening Avante:
+- Don't open Avante in Oil (file browser) buffers - open a specific file first
+- The config includes guards to prevent this automatically
+
+### LSP not working
+
+If LSP features aren't working:
+```vim
+:Mason       " Check if language servers are installed
+:LspInfo     " Check LSP client status
+:LspLog      " View LSP logs
+```
+
 ## Example Files
 
 The repository includes example configuration files (`.example.lua`) that can be used as templates or references for customization.
+
+## License
+
+Feel free to use and adapt this configuration for your own needs.
 

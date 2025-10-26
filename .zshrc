@@ -1,5 +1,10 @@
 # Paths
 export PATH=$PATH:/opt/homebrew/bin
+export MYVIMRC="~/.config/nvim/init.lua"
+export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS/firefox"
+
+# Load local secrets (not tracked by git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Env variables
 export scoop="~/Documents/SCOOP"

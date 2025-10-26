@@ -1,0 +1,14 @@
+#!/bin/bash
+# Neovim plugin NPM wrapper
+# Forces Node 22+ for NPM operations, ignoring project-specific .nvmrc files
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Use Node 22 regardless of project .nvmrc
+nvm use 22 > /dev/null 2>&1
+
+# Execute NPM with provided arguments
+exec npm "$@"
+

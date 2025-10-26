@@ -5,8 +5,39 @@ This directory contains core Neovim configuration files.
 ## Files
 
 - `bootstrap.lua` - Plugin manager bootstrap configuration
+- `keymaps.lua` - Global keybindings and custom keymaps
 - `coffeescript.lua` - CoffeeScript autocommands, keybindings, and filetype detection
 - `options.lua` - Neovim options and settings
+- `utils.lua` - Utility functions
+- `autocommands.lua` - Automatic commands
+
+## Keymaps
+
+The `keymaps.lua` file contains all global keybindings. Key features include:
+
+### AI & Copilot
+- **`<leader>aa`** - Toggle Avante AI chat (with Oil buffer protection)
+- **`<leader>ae`** - Edit selected code with AI
+- **`<leader>ap`** - Switch AI provider (Claude/Copilot)
+- **`<leader>am`** - Switch Claude model
+- **`<leader>aM`** - Switch Copilot model (GPT)
+- **`<leader>aE`** - Edit Avante config file
+- **Diff controls**: `co`, `ct`, `ca`, `c0`, `cb`, `]x`, `[x`
+
+### Window Management
+- **`Ctrl+h/j/k/l`** - Navigate between splits
+- **`<leader>pv/ps`** - Split vertically/horizontally
+- **`<leader>w+/-/>/< `** - Resize splits
+
+### Editing
+- **`Option+↑/↓`** - Move lines/selection up/down (VSCode-style)
+- **`<leader>cn`** - Cursor-style jump to next word occurrence and append
+
+### Git Navigation
+- **`<leader>gs`** - Git status (changed files only via Telescope)
+- **`<leader>gf`** - Git files (all tracked files via Telescope)
+
+See [KEYMAPS.md](../../KEYMAPS.md) for complete keymap reference.
 
 ## Options Reference
 
