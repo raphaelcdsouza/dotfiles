@@ -47,6 +47,11 @@ return {
       support_paste_from_clipboard = true,
     },
     
+    -- Safety: Require confirmation for command execution
+    acp = {
+      auto_confirm_execution = false, -- IMPORTANT: Always ask before running commands (git, bash, rm, etc.)
+    },
+    
     -- Mappings (for when Avante sidebar is open)
     mappings = {
       ask = "<leader>aa",
