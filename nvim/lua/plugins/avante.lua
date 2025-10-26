@@ -19,6 +19,11 @@ return {
     ---@type "claude" | "openai" | "azure" | "copilot" | string
     provider = "copilot", -- Default to Copilot
     
+    -- Template mode - DISABLE command execution entirely
+    -- Options: "agentic" (executes commands), "suggesting" (suggests only), "editing" (code edits)
+    -- Using "suggesting" means Avante will ONLY show commands in markdown - YOU must copy/paste to run them
+    template = "suggesting", -- SAFE: Shows commands but NEVER executes them
+    
     -- Provider-specific settings
     claude = {
       endpoint = "https://api.anthropic.com",
@@ -47,10 +52,6 @@ return {
       support_paste_from_clipboard = true,
     },
     
-    -- Safety: Require confirmation for command execution
-    acp = {
-      auto_confirm_execution = false, -- IMPORTANT: Always ask before running commands (git, bash, rm, etc.)
-    },
     
     -- Mappings (for when Avante sidebar is open)
     mappings = {
