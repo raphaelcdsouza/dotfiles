@@ -22,6 +22,16 @@ This repository currently contains configurations for:
   - **Telescope** fuzzy finder with git integration
   - **Oil.nvim** file explorer
   - Plugin management with lazy.nvim
+
+- **[Tmux](tmux/README.md)** - Terminal multiplexer configuration with:
+  - **Tokyo Night theme** with git status, path, and datetime widgets
+  - Custom prefix key (`Ctrl+Space`) for ergonomic access
+  - Vim-tmux seamless navigation (`Ctrl+h/j/k/l`)
+  - Modern split commands (`|` and `-` in current directory)
+  - Fast window switching (`Shift+Left/Right`, `Alt+1-5`)
+  - Session persistence across reboots (auto-save/restore)
+  - Vi-style copy mode with clipboard integration
+  - Status bar positioned at top for clean separation from vim
   
 - **Zsh** (`.zshrc`) - Zsh shell configuration with oh-my-zsh, spaceship theme, and development tools (asdf, NVM, Zinit plugins)
 

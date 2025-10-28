@@ -62,6 +62,7 @@ Cursor-style AI-powered Neovim configuration using Lua.
         ├── oil.lua          # File explorer
         ├── spectre.lua      # Search and replace
         ├── treesitter.lua   # Syntax highlighting
+        ├── tmux-navigator.lua # Seamless tmux/vim navigation
         ├── autopairs.lua    # Auto-pairing brackets
         ├── autotag.lua      # Auto-close HTML tags
         ├── bufferline.lua   # Buffer tabs
@@ -131,6 +132,12 @@ This configuration includes the following plugins:
 - **[LuaSnip](https://github.com/L3MON4D3/LuaSnip)** - Snippet engine with friendly-snippets library
 
 ### Editor Enhancement
+
+- **[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)** - Seamless navigation between vim splits and tmux panes
+  - **Keybindings**: `Ctrl+h/j/k/l` - Navigate between vim splits and tmux panes without thinking
+  - Automatically detects whether you're at vim or tmux boundary
+  - Works bidirectionally - navigate from vim to tmux and back
+  - Must be used with tmux plugin: See [tmux configuration](../tmux/README.md)
 
 - **[inc-rename.nvim](https://github.com/smjonas/inc-rename.nvim)** - Interactive LSP rename with live preview
   - **Keybinding**: `<leader>rn` - Shows preview of all symbol renames before applying
@@ -363,6 +370,7 @@ Navigation:
 <leader>fb   → Find buffers
 s            → Flash jump
 -            → Open file explorer (Oil)
+Ctrl+h/j/k/l → Navigate vim splits & tmux panes
 ```
 
 ## Node.js Version Isolation

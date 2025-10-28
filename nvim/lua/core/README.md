@@ -25,7 +25,7 @@ The `keymaps.lua` file contains all global keybindings. Key features include:
 - **Diff controls**: `co`, `ct`, `ca`, `c0`, `cb`, `]x`, `[x`
 
 ### Window Management
-- **`Ctrl+h/j/k/l`** - Navigate between splits
+- **`Ctrl+h/j/k/l`** - Navigate between splits (seamlessly works with tmux panes via vim-tmux-navigator)
 - **`<leader>pv/ps`** - Split vertically/horizontally
 - **`<leader>w+/-/>/< `** - Resize splits
 
