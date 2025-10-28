@@ -17,42 +17,41 @@ return {
   version = false,
   opts = {
     ---@type "claude" | "openai" | "azure" | "copilot" | string
-    provider = "copilot", -- Default to Copilot
-    
-    -- Template mode - DISABLE command execution entirely
-    -- Options: "agentic" (executes commands), "suggesting" (suggests only), "editing" (code edits)
-    -- Using "suggesting" means Avante will ONLY show commands in markdown - YOU must copy/paste to run them
-    template = "suggesting", -- SAFE: Shows commands but NEVER executes them
-    
-    -- Provider-specific settings
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-sonnet-4-5-20250929", -- Latest Claude 4.5 Sonnet via Anthropic API
-      timeout = 30000,
-      max_tokens = 8000,
-      temperature = 0, -- Deterministic responses
-      api_key_name = "AVANTE_ANTHROPIC_API_KEY", -- Your custom environment variable name
+    provider = "copilot", -- Default to Copilot for chat
+
+    -- Provider-specific settings (NEW FORMAT)
+    providers = {
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-sonnet-4-5-20250929", -- Latest Claude 4.5 Sonnet via Anthropic API
+        timeout = 30000,
+        api_key_name = "ANTHROPIC_API_KEY", -- Standard environment variable name
+        extra_request_body = {
+          max_tokens = 8000,
+          temperature = 0, -- Deterministic responses
+        },
+      },
+      copilot = {
+        endpoint = "https://api.githubcopilot.com",
+        model = "gpt-4o-2024-11-20", -- Copilot only supports GPT models currently
+        timeout = 30000,
+        extra_request_body = {
+          max_tokens = 8000,
+          temperature = 0,
+        },
+      },
     },
-    
-    -- Copilot settings (GitHub Models)
-    copilot = {
-      endpoint = "https://api.githubcopilot.com",
-      model = "gpt-4o-2024-11-20", -- Copilot only supports GPT models currently
-      timeout = 30000,
-      max_tokens = 8000,
-      temperature = 0,
-    },
-    
+
     -- Behavior configuration (KEEP CURRENT WORKING BEHAVIOR)
     behaviour = {
       auto_apply_diff_after_generation = false, -- Cursor-style: show diff, don't auto-apply
       auto_set_keymaps = false, -- Use custom keymaps with Oil guard
       auto_set_highlight_group = true,
-      auto_suggestions = false, -- Don't auto-suggest from workspace
+      auto_suggestions = false, -- DISABLED: Use GitHub Copilot plugin for inline suggestions
       support_paste_from_clipboard = true,
     },
-    
-    
+
+
     -- Mappings (for when Avante sidebar is open)
     mappings = {
       ask = "<leader>aa",
@@ -70,7 +69,7 @@ return {
         prev = "[[",
       },
     },
-    
+
     -- Window configuration
     windows = {
       wrap = true, -- Wrap text
@@ -80,7 +79,7 @@ return {
         rounded = true,
       },
     },
-    
+
     -- Highlight settings
     highlights = {
       diff = {
@@ -88,28 +87,19 @@ return {
         incoming = "DiffAdd",
       },
     },
-    
+
     -- File selector (for adding files manually with Ctrl+F)
     file_selector = {
       provider = "telescope",
     },
-    
-    -- Vendor-specific optimizations
-    vendors = {
-      ---@type AvanteProvider
-      claude = {
-        __inherited_from = "claude",
-        api_key_name = "ANTHROPIC_API_KEY",
-      },
-    },
   },
-  
+
   config = function(_, opts)
     -- Node.js isolation for legacy projects
     vim.env.PATH = vim.fn.expand('~/.config/nvim/scripts') .. ':' .. vim.env.PATH
-    
+
     require("avante").setup(opts)
-    
+
     -- Set up custom highlights for better diff visibility
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "*",
@@ -121,7 +111,7 @@ return {
       end,
     })
   end,
-  
+
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
