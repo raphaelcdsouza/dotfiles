@@ -197,8 +197,6 @@ map('n', '<leader>aE', function()
   vim.notify("💡 Edit models here, then restart Nvim", vim.log.levels.INFO)
 end, { desc = 'Avante: Edit Config (to change models)' })
 
-
-
 -- Avante Diff Keymaps (manually set since auto_set_keymaps is disabled)
 -- These work when viewing diffs in Avante
 map('n', 'co', '<cmd>AvanteConflictOurs<cr>', { desc = 'Avante: Choose Ours (reject AI)' })

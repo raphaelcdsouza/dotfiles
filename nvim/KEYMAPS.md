@@ -78,6 +78,8 @@ These keymaps are active when viewing AI-suggested code changes:
 - Use `<leader>ax` to stop long-running AI requests
 - Use `<leader>aX` (capital X) to completely clear all cache/state (removes todos, history, everything)
 - Or use `Ctrl+C` in the Avante chat window to interrupt
+- Avante is used for **chat-based editing only** (not inline suggestions)
+- GitHub Copilot plugin handles all inline suggestions
 
 ---
 
@@ -118,10 +120,13 @@ These keymaps are active when viewing AI-suggested code changes:
 
 | Mode | Keymap | Description |
 |------|--------|-------------|
-| Normal | `<C-h>` | Move to left split |
-| Normal | `<C-j>` | Move to split below |
-| Normal | `<C-k>` | Move to split above |
-| Normal | `<C-l>` | Move to right split |
+| Normal | `<C-h>` | Move to left split (also works with tmux panes) |
+| Normal | `<C-j>` | Move to split below (also works with tmux panes) |
+| Normal | `<C-k>` | Move to split above (also works with tmux panes) |
+| Normal | `<C-l>` | Move to right split (also works with tmux panes) |
+| Normal | `<C-\>` | Move to previous split/pane (tmux) |
+
+**Note**: These keybindings seamlessly navigate between vim splits AND tmux panes when using tmux. See [tmux configuration](../tmux/README.md) for setup.
 
 ### Split Management
 
